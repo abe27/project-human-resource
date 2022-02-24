@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('geographies', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->char('user_id', 21);
-            $table->char('position_id', 21);
-            $table->char('section_id', 21);
-            $table->char('department_id', 21);
-            $table->string('name')->nullable();
-            $table->string('name_en')->nullable();
-            $table->date('start_date');
-            $table->enum('employee_status', ['-', 'part_time', 'outsource', 'employee'])->nullable()->default('-');
+            $table->integer('geo_id');
+            $table->string('name')->unique();
+            $table->longText('description')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('geographies');
     }
 };

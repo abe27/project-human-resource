@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->char('id', 21)->primary();
             $table->string('name')->unique();
             $table->longText('description')->nullable();
-            $table->string('regular_color')->nullable()->default('#64D4AB');
+            $table->string('image_url')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('vehicles');
     }
 };

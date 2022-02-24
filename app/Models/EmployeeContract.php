@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Shift extends Model
+class EmployeeContract extends Model
 {
     use HasFactory, HasApiTokens, Nanoids;
 
     public $fillable = [
-        'name',
-        'description',
-        'regular_color',
+        'profile_id',
+        'contract_name',
+        'relation',
+        'mobile_no',
         'is_active',
     ];
 }

@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('districts', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('name')->unique();
+            $table->integer('district_id');
+            $table->char('province_id', 21);
+            $table->string('district_name');
             $table->longText('description')->nullable();
-            $table->string('regular_color')->nullable()->default('#64D4AB');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
+            $table->foreign('province_id')->references('id')->on('provinces')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('districts');
     }
 };

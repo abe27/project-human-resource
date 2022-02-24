@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('whs', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('title', 255)->unique();
+            $table->string('name')->unique();
             $table->longText('description')->nullable();
-            $table->decimal('price', 64, 6)->nullable()->default(0);
-            $table->decimal('price', 64, 6)->nullable()->default(0);
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('whs');
     }
 };

@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('driver_licenses', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('name')->unique();
-            $table->longText('description')->nullable();
-            $table->string('regular_color')->nullable()->default('#64D4AB');
+            $table->char('profile_id', 21);
+            $table->char('vehicle_id', 21);
+            $table->string('license_no')->unique();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
+
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('driver_licenses');
     }
 };

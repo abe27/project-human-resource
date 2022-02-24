@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Shift extends Model
+class Geography extends Model
 {
     use HasFactory, HasApiTokens, Nanoids;
 
     public $fillable = [
+        'geo_id',
         'name',
         'description',
-        'regular_color',
         'is_active',
     ];
 }

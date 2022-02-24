@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('employee_contracts', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('name')->unique();
-            $table->longText('description')->nullable();
-            $table->string('regular_color')->nullable()->default('#64D4AB');
+            $table->char('profile_id', 21);
+            $table->string('contract_name');
+            $table->enum('relation', ['-', 'Parent','Spouse','Child','Friend'])->nullable()->default('-');
+            $table->string('mobile_no')->nullable()->default('-');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
+            $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('employee_contracts');
     }
 };
