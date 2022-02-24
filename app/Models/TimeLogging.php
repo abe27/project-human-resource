@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class DriverLicense extends Model
+class TimeLogging extends Model
 {
     use HasFactory, HasApiTokens, Nanoids;
 
     public $fillable = [
-        'profile_id',
-        'vehicle_id',
-        'license_no',
-        'start_date',
-        'end_date',
+        'emp_id',
+        'scan',
+        'on_date',
+        'on_time',
+        'on_machine',
         'is_active',
     ];
 }

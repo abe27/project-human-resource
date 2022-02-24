@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('driver_licenses', function (Blueprint $table) {
+        Schema::create('time_loggings', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->char('profile_id', 21);
-            $table->char('vehicle_id', 21);
-            $table->string('license_no')->unique();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->char('emp_id', 21);
+            $table->enum('scan', ['-', 'I', 'O'])->nullable()->default('-');
+            $table->date('on_date');
+            $table->time('on_time');
+            $table->string('on_machine');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
-            $table->foreign('profile_id')->references('id')->on('profiles')->cascadeOnDelete();
-            $table->foreign('vehicle_id')->references('id')->on('vehicles')->cascadeOnDelete();
+            $table->foreign('emp_id')->references('id')->on('employees')->cascadeOnDelete();
         });
     }
 
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('driver_licenses');
+        Schema::dropIfExists('time_loggings');
     }
 };
