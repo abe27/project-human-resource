@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Company extends Model
+class Position extends Model
 {
     use HasFactory, HasApiTokens, Nanoids;
 
-    public $fillable = [
+    protected $fillable = [
         'name',
         'description',
-        'logo_url',
         'is_active',
     ];
 }

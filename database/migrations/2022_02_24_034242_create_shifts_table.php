@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->char('id', 21)->primary();
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->string('logo_url')->nullable();
-            $table->boolean('is_active')->nullable()->default(false);
+        Schema::create('shifts', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('shifts');
     }
 };

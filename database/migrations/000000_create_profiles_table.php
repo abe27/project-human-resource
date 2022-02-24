@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->string('logo_url')->nullable();
+            $table->char('user_id', 21);
+            $table->char('position_id', 21);
+            $table->char('section_id', 21);
+            $table->char('department_id', 21);
+            $table->string('name')->nullable();
+            $table->string('name_en')->nullable();
+            $table->date('start_date');
+            $table->enum('employee_status', ['-', 'part_time', 'outsource', 'employee'])->nullable()->default('-');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('profiles');
     }
 };
