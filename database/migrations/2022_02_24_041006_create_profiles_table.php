@@ -38,7 +38,7 @@ return new class extends Migration
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('whs_id')->references('id')->on('whs_id')->cascadeOnDelete();
+            $table->foreign('whs_id')->references('id')->on('whs')->cascadeOnDelete();
             $table->foreign('position_id')->references('id')->on('positions')->cascadeOnDelete();
             $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();
             $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
