@@ -153,15 +153,11 @@ const Welcome = (props) => {
                     className="p-4 focus:outline-none focus:shadow-outline"
                   >
                     <svg
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
+                      className="fill-current pointer-events-none text-gray-800 w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
-                      className="w-6 h-6"
                     >
-                      <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                      <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
                     </svg>
                   </button>
                 </span>
@@ -169,8 +165,8 @@ const Welcome = (props) => {
                   type="search"
                   name="q"
                   className="w-full text-sm text-gray-800 bg-gray-100 focus:outline-none focus:bg-white focus:text-gray-900 rounded py-1 px-2 pl-10 appearance-none leading-normal"
-                  placeholder="Search..."
-                  autocomplete="off"
+                  placeHolder="Search..."
+                  autoComplete="off"
                 />
               </div>
             </div>
@@ -178,7 +174,133 @@ const Welcome = (props) => {
         </nav>
         // --Container--
         <div className="container w-full mx-auto pt-20">
-          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal"></div>
+          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+            // --summary card--
+            <div className="flex flex-wrap">
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-green-600">
+                        <i className="fa fa-wallet fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        Total Revenue
+                      </h5>
+                      <h3 className="font-bold text-3xl">
+                        $3249{' '}
+                        <span className="text-green-500">
+                          <i className="fas fa-caret-up"></i>
+                        </span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-pink-600">
+                        <i className="fas fa-users fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        Total Users
+                      </h5>
+                      <h3 className="font-bold text-3xl">
+                        249{' '}
+                        <span className="text-pink-500">
+                          <i className="fas fa-exchange-alt"></i>
+                        </span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-yellow-600">
+                        <i className="fas fa-user-plus fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        New Users
+                      </h5>
+                      <h3 className="font-bold text-3xl">
+                        2{' '}
+                        <span className="text-yellow-600">
+                          <i className="fas fa-caret-up"></i>
+                        </span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-blue-600">
+                        <i className="fas fa-server fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        Server Uptime
+                      </h5>
+                      <h3 className="font-bold text-3xl">152 days</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-indigo-600">
+                        <i className="fas fa-tasks fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        To Do List
+                      </h5>
+                      <h3 className="font-bold text-3xl">7 tasks</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div className="bg-white border rounded shadow p-2">
+                  <div className="flex flex-row items-center">
+                    <div className="flex-shrink pr-4">
+                      <div className="rounded p-3 bg-red-600">
+                        <i className="fas fa-inbox fa-2x fa-fw fa-inverse"></i>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-right md:text-center">
+                      <h5 className="font-bold uppercase text-gray-500">
+                        Issues
+                      </h5>
+                      <h3 className="font-bold text-3xl">
+                        3{' '}
+                        <span className="text-red-500">
+                          <i className="fas fa-caret-up"></i>
+                        </span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
