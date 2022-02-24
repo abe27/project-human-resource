@@ -21,6 +21,7 @@ return new class extends Migration
             $table->char('section_id', 21);
             $table->char('department_id', 21);
             $table->char('shift_id', 21);
+            $table->char('level_id', 21);
             $table->char('prefix_id', 21);
             $table->string('id_card_number', 20)->unique();
             $table->string('nick_name')->nullable()->default('-');
@@ -42,6 +43,7 @@ return new class extends Migration
             $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();
             $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
             $table->foreign('shift_id')->references('id')->on('shifts')->cascadeOnDelete();
+            $table->foreign('level_id')->references('id')->on('levels')->cascadeOnDelete();
             $table->foreign('prefix_id')->references('id')->on('prefix_names')->cascadeOnDelete();
         });
     }

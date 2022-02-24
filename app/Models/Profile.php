@@ -17,6 +17,7 @@ class Profile extends Model
         'section_id',
         'department_id',
         'shift_id',
+        'level_id',
         'prefix_id',
         'id_card_number',
         'nick_name',
