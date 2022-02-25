@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->char('user_id', 21);
+            $table->uuid('user_id');
             $table->char('whs_id', 21);
             $table->char('position_id', 21);
             $table->char('section_id', 21);

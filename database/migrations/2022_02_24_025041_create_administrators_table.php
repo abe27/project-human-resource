@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('administrators', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->char('user_id', 21);
+            $table->uuid('user_id');
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
