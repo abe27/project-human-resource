@@ -1,0 +1,23 @@
+[{
+    "name": "-",
+    "description": "-",
+    "regular_color": "#64D4AB",
+    "is_active": true
+  },
+  {
+    "name": "S",
+    "description": "Standard",
+    "regular_color": "#64D4AB",
+    "is_active": true
+  }, {
+    "name": "A",
+    "description": "Shift A",
+    "regular_color": "#64D4AB",
+    "is_active": true
+  }, {
+    "name": "B",
+    "description": "Shift B",
+    "regular_color": "#64D4AB",
+    "is_active": true
+  }
+]

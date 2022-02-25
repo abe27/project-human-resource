@@ -16,6 +16,7 @@ class Profile extends Model
         'position_id',
         'section_id',
         'department_id',
+        'travel_id',
         'shift_id',
         'level_id',
         'prefix_id',

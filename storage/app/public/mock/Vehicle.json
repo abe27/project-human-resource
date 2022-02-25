@@ -1,0 +1,26 @@
+[{
+    "name": "Car",
+    "description": "รถยนต์ส่วนบุคคล",
+    "is_active": true
+  },
+  {
+    "name": "Truck",
+    "description": "รถบรรทุก",
+    "is_active": true
+  },
+  {
+    "name": "Motorcycle",
+    "description": "รถจักรยานยนต์",
+    "is_active": true
+  },
+  {
+    "name": "Stand Forklift",
+    "description": "รถยกยืน",
+    "is_active": true
+  },
+  {
+    "name": "Sit Forklift",
+    "description": "รถยกนั่ง",
+    "is_active": true
+  }
+]

@@ -1,37 +1,48 @@
 [{
-  "name": "Admin",
-  "description": "Administrator",
-  "is_active": true
-}, {
-  "name": "VP",
-  "description": "Vice President",
-  "is_active": true
-}, {
-  "name": "GM",
-  "description": "General Manager",
-  "is_active": true
-}, {
-  "name": "MG",
-  "description": "Manager",
-  "is_active": true
-}, {
-  "name": "ASS",
-  "description": "Asst. Manager",
-  "is_active": true
-}, {
-  "name": "SUP",
-  "description": "Supervisor",
-  "is_active": true
-}, {
-  "name": "FORE",
-  "description": "Foreman",
-  "is_active": true
-}, {
-  "name": "LEAD",
-  "description": "Leader",
-  "is_active": true
-}, {
-  "name": "EMP",
-  "description": "Employee",
-  "is_active": true
-}]
+    "name": "Admin",
+    "description": "Administrator",
+    "is_active": true
+  }, {
+    "name": "President",
+    "description": "President",
+    "is_active": true
+  },
+  {
+    "name": "VP",
+    "description": "Vice President",
+    "is_active": true
+  },
+  {
+    "name": "OP",
+    "description": "OP. Manager",
+    "is_active": true
+  }, {
+    "name": "GM",
+    "description": "General Manager",
+    "is_active": true
+  }, {
+    "name": "MG",
+    "description": "Manager",
+    "is_active": true
+  }, {
+    "name": "ASS",
+    "description": "Asst. Manager",
+    "is_active": true
+  }, {
+    "name": "SUP",
+    "description": "Supervisor",
+    "is_active": true
+  }, {
+    "name": "FORE",
+    "description": "Foreman",
+    "is_active": true
+  }, {
+    "name": "LEAD",
+    "description": "Leader",
+    "is_active": true
+  }, {
+    "name": "EMP",
+    "description": "Employee",
+    "is_active": true
+  }
+]

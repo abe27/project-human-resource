@@ -1,0 +1,15 @@
+[{
+    "name": "-",
+    "description": "-",
+    "is_active": true
+  },
+  {
+    "name": "มาเอง",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "รถรับส่ง",
+    "description": "-",
+    "is_active": true
+  }
+]

@@ -1,0 +1,82 @@
+[{
+  "name": "Administration",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Data Stock",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "HR",
+  "description": "Personnel & General Affairs",
+  "is_active": true
+}, {
+  "name": "Accounting",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Replacement",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Free Location",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Receive",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Delivery",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "PBD",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "KANBAN",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Polytainer",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Part Sales",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Sample",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Stock",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Wire",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Loading",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Transportation",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Sales&Marketing",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Apprentice",
+  "description": "นักศึกษาฝึกงาน",
+  "is_active": true
+}, {
+  "name": "IT",
+  "description": "-",
+  "is_active": true
+}
+]

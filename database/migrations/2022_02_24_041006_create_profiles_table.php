@@ -20,6 +20,7 @@ return new class extends Migration
             $table->char('position_id', 21);
             $table->char('section_id', 21);
             $table->char('department_id', 21);
+            $table->char('travel_id', 21)->nullable();
             $table->char('shift_id', 21);
             $table->char('level_id', 21);
             $table->char('prefix_id', 21);
@@ -42,6 +43,7 @@ return new class extends Migration
             $table->foreign('position_id')->references('id')->on('positions')->cascadeOnDelete();
             $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();
             $table->foreign('department_id')->references('id')->on('departments')->cascadeOnDelete();
+            $table->foreign('travel_id')->references('id')->on('travelings')->nullOnDelete();
             $table->foreign('shift_id')->references('id')->on('shifts')->cascadeOnDelete();
             $table->foreign('level_id')->references('id')->on('levels')->cascadeOnDelete();
             $table->foreign('prefix_id')->references('id')->on('prefix_names')->cascadeOnDelete();

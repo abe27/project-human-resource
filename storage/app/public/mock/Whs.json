@@ -4,7 +4,7 @@
   "is_active": true
 }, {
   "name": "FG",
-  "description": "-",
+  "description": "Finished Goods",
   "is_active": true
 }, {
   "name": "J03",
@@ -16,6 +16,10 @@
   "is_active": true
 }, {
   "name": "CK2",
+  "description": "-",
+  "is_active": true
+}, {
+  "name": "Meter",
   "description": "-",
   "is_active": true
 }]

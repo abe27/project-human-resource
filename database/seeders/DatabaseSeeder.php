@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call([PositionSeeder::class]);
         $this->call([SectionSeeder::class]);
         $this->call([DepartmentSeeder::class]);
+        $this->call([TravelingSeeder::class]);
         $this->call([ShiftSeeder::class]);
         $this->call([VehicleSeeder::class]);
+        $this->call([PrefixNameSeeder::class]);
         $this->call([UserSeeder::class]);
         $this->call([AdministratorSeeder::class]);
         Schema::enableForeignKeyConstraints();

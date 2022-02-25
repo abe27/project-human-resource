@@ -1,7 +1,83 @@
-[
+[{
+    "name": "President",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Vice President",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "OP. Manager",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "General Manager",
+    "description": "-",
+    "is_active": true
+  },
   {
-    "name": "test",
-    "description": "test",
+    "name": "Manager",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Asst. Manager",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Foreman",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Supervisor",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Leader",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Programmer",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "IT Support Staff",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Programmer",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Staff",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Worker",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Driver",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Maintenance",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Interpreter",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Japanese Secretary",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "Security Guard",
+    "description": "-",
+    "is_active": true
+  }, {
+    "name": "House Keeper",
+    "description": "-",
     "is_active": true
   }
 ]
