@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Whs;
+use App\Models\Level;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
-class WhsSeeder extends Seeder
+class LevelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,16 @@ class WhsSeeder extends Seeder
      */
     public function run()
     {
-        $json = Storage::get('public/mock/Whs.json');
+        $json = Storage::get('public/mock/Level.json');
         $data = json_decode($json);
 
-        Whs::truncate();
+        Level::truncate();
         foreach ($data as $key) {
-            $whs = new Whs();
-            $whs->name = $key->name;
-            $whs->description = $key->description;
-            $whs->is_active = $key->is_active;
-            $whs->save();
+            $level = new Level();
+            $level->name = $key->name;
+            $level->description = $key->description;
+            $level->is_active = $key->is_active;
+            $level->save();
         }
     }
 }

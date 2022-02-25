@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Level extends Model
+class Administrator extends Model
 {
     use HasFactory, HasApiTokens, Nanoids;
 
     public $fillable = [
-        'name',
-        'description',
-        'is_active',
+        'user_id',
+        'is_active'
     ];
 }

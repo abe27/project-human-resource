@@ -1,0 +1,20 @@
+[
+  {
+    "name": "SPL",
+    "description": "SEIWA PIONEER LOGISTICS CO.,TLD.",
+    "logo_url": "storage/logo/SPL.png",
+    "is_active": true
+  },
+  {
+    "name": "SKT",
+    "description": "SEIWA KAIUN(THAILAND) CO.,TLD.",
+    "logo_url": "storage/logo/SKT.png",
+    "is_active": true
+  },
+  {
+    "name": "SPIF",
+    "description": "SEIWA PIONEER INTERNATIONAL FREIGHT CO.,TLD.",
+    "logo_url": "storage/logo/SPIF.png",
+    "is_active": true
+  }
+]

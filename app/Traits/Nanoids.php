@@ -14,10 +14,14 @@ trait Nanoids
     {
         parent::boot();
         static::creating(function ($model) {
+            $client = new Client();
+            $keys = $client->formattedId(
+                $alphabet =
+                    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                $size = 21
+            );
             if (empty($model->{$model->getKeyName()})) {
-                $client = new Client();
-                $client->formattedId($alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', $size = 21);
-                $model->{$model->getKeyName()} = $client;
+                $model->{$model->getKeyName()} = $keys;
             }
         });
     }
