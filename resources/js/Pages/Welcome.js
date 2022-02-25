@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Head } from '@inertiajs/inertia-react'
 
 const Welcome = (props) => {
+  const [userMenu, setUserMenu] = useState(false)
+
+  const classNames = (...classes) => classes.filter(Boolean).join(' ')
   return (
     <>
       <Head title="Welcome" />
@@ -11,7 +14,7 @@ const Welcome = (props) => {
             <div className="w-1/2 pl-2 md:pl-0">
               <a
                 className="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold"
-                href="#"
+                href={ route('dashboard') }
               >
                 <i className="fas fa-sun text-pink-600 pr-3"></i> Admin Day Mode
               </a>
@@ -22,6 +25,7 @@ const Welcome = (props) => {
                   <button
                     id="userButton"
                     className="flex items-center focus:outline-none mr-3"
+                    onClick={() => setUserMenu(!userMenu)}
                   >
                     <img
                       className="w-8 h-8 rounded-full mr-4"
@@ -43,8 +47,9 @@ const Welcome = (props) => {
                     </svg>
                   </button>
                   <div
+                    onClick={() => setUserMenu(false)}
                     id="userMenu"
-                    className="bg-white rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible"
+                    className={classNames(userMenu ? '': 'invisible ','bg-white rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30')}
                   >
                     <ul className="list-reset">
                       <li>
@@ -68,7 +73,7 @@ const Welcome = (props) => {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href={route('login')}
                           className="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline"
                         >
                           Logout
@@ -165,7 +170,7 @@ const Welcome = (props) => {
                   type="search"
                   name="q"
                   className="w-full text-sm text-gray-800 bg-gray-100 focus:outline-none focus:bg-white focus:text-gray-900 rounded py-1 px-2 pl-10 appearance-none leading-normal"
-                  placeHolder="Search..."
+                  placeholder="Search..."
                   autoComplete="off"
                 />
               </div>
