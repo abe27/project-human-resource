@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\WebsiteName;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class ProfileController extends Controller
+class WebsiteNameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,15 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Profile');
+        //
     }
+
+    public function get()
+    {
+        $data = WebsiteName::where('is_active', true)->get();
+        return response()->json($data);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,10 +48,10 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\WebsiteName  $websiteName
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(WebsiteName $websiteName)
     {
         //
     }
@@ -53,10 +59,10 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\WebsiteName  $websiteName
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(WebsiteName $websiteName)
     {
         //
     }
@@ -65,10 +71,10 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\WebsiteName  $websiteName
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, WebsiteName $websiteName)
     {
         //
     }
@@ -76,10 +82,10 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\WebsiteName  $websiteName
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy(WebsiteName $websiteName)
     {
         //
     }
