@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Dropdown from '@/Components/Dropdown'
-import { Skeletons } from '@/Components'
 
 const UserMenu = (i) => {
   if (i.menu_group == 'User') {
@@ -45,15 +44,24 @@ const mainMenu = (i) => {
 
 const Authenticated = ({ auth, header, children }) => {
   const [menuItem, setMenuItem] = useState([])
+  const [profileData, setProfileData] = useState([])
   const getMenu = async () => {
     const get = await axios.get(route('menu.get'))
     const data = await get.data
     setMenuItem(data)
   }
 
+  const getProfile = async () => {
+    const get = await axios.get(route('profile.get'))
+    const data = await get.data
+    console.dir(data)
+    setProfileData(data)
+  }
+
   useEffect(() => {
-    getMenu()
+    getMenu(), getProfile()
   }, [])
+
   return (
     <div className="min-h-screen bg-gray-100 font-sans leading-normal tracking-normal">
       <nav id="header" className="bg-white fixed w-full z-10 top-0 shadow">
@@ -76,11 +84,13 @@ const Authenticated = ({ auth, header, children }) => {
                         type="button"
                         className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                       >
+                      {profileData.avatar_url && (
                         <img
                           className="w-8 h-8 rounded-full mr-4"
-                          src="http://i.pravatar.cc/300"
-                          alt="Avatar of User"
-                        />{' '}
+                          src={`/${profileData.avatar_url}`}
+                          alt={profileData.name_th}
+                        />
+                      )}{' '}
                         <span className="hidden md:inline-block">
                           Hi, {auth.user.name}
                         </span>

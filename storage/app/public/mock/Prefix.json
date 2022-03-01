@@ -1,15 +1,15 @@
 [{
-    "name": "Mr.",
-    "description": "นาย",
+    "name": "นาย",
+    "description": "Mr.",
     "is_active": true
   },
   {
-    "name": "Miss.",
-    "description": "นางสาว",
+    "name": "นางสาว",
+    "description": "Miss.",
     "is_active": true
   }, {
-    "name": "Mrs.",
-    "description": "นาง",
+    "name": "นาง",
+    "description": "Mrs.",
     "is_active": true
   }
 ]

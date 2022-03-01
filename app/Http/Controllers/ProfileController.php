@@ -18,6 +18,22 @@ class ProfileController extends Controller
         return Inertia::render('Profile');
     }
 
+    public function get(Request $request)
+    {
+        $data = Profile::with([
+            'user',
+            'position',
+            'section',
+            'department',
+            'travel',
+            'shift',
+            'level',
+            'prefix'
+        ])->where('user_id', $request->user()->id)->first();
+        // return response()->json($request->user()->load('profile'));
+        return response()->json($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

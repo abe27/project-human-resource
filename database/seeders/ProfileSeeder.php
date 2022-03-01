@@ -38,7 +38,7 @@ class ProfileSeeder extends Seeder
             $travel = Traveling::where('name', $key->travel_id)->first();
             $shift = Shift::where('name', $key->shift_id)->first();
             $level = Level::where('name', $key->level_id)->first();
-            $prefix = PrefixName::where('prefix_th', $key->prefix_id)->first();
+            $prefix = PrefixName::where('prefix_en', $key->prefix_id)->first();
             $profile = new Profile();
             $profile->user_id = $user->id;
             $profile->whs_id = $whs->id;

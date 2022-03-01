@@ -38,7 +38,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashBoardController::class, 'index'])->name('dashboard.index');
 
     Route::get('/settings', [DashBoardController::class, 'index'])->name('settings.index');
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::prefix('/profile')->group(function() {
+        Route::get('/index', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/get', [ProfileController::class, 'get'])->name('profile.get');
+    });
+
     Route::get('/notifications', [DashBoardController::class, 'index'])->name('notifications.index');
     Route::get('/anlytics', [DashBoardController::class, 'index'])->name('anlytics.index');
     Route::get('/leave', [DashBoardController::class, 'index'])->name('leave.index');
