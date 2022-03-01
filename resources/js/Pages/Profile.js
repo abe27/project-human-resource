@@ -45,8 +45,9 @@ const Profile = (props) => {
   }
 
   const afterUploadClicks = async (e) => {
-    // e.preventDefault()
-    console.dir(e.target.files[0])
+    e.preventDefault()
+    console.dir(e.target.name)
+    setData(e.target.name, e.target.files[0])
     // const config = {
     //   headers: {
     //     'content-type': 'multipart/form-data',
@@ -93,14 +94,17 @@ const Profile = (props) => {
                     >
                       Edit
                     </button>
-                    <input
-                      type="file"
-                      id="avatar"
-                      name="avatar"
-                      ref={inputRef}
-                      onChange={afterUploadClicks}
-                      className="hidden"
-                    />
+                    <form submit="uploadAvatar" enctype="multipart/form-data">
+                      <input
+                        type="file"
+                        id="avatar"
+                        name="avatar"
+                        ref={inputRef}
+                        onChange={afterUploadClicks}
+                        className="hidden"
+                      />
+                      <button type="submit" className="btn btn-primary">Click</button>
+                    </form>
                   </div>
                 </div>
                 <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
