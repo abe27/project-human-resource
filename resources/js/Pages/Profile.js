@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Authenticated from '@/Layouts/Authenticated'
-import { Head } from '@inertiajs/inertia-react'
+import { Head, useForm } from '@inertiajs/inertia-react'
 import { Skeletons } from '@/Components'
 import axios from 'axios'
 
 const Profile = (props) => {
+  const inputRef = useRef()
+  const btnSubmit = useRef()
   const [profileData, setProfileData] = useState(null)
+  const [avatarUrl, setAvatarUrl] = useState(null)
+  const { data, setData, put, processing, errors, reset } = useForm({
+    name: '',
+    avatar: null,
+  })
 
   const getProfile = async () => {
     const get = await axios.get(route('profile.get'))
     const data = await get.data
     // console.dir(data)
     setProfileData(data)
+    setAvatarUrl(`/${data.avatar_url}`)
   }
 
   const minusDate = (start_date) => {
@@ -26,6 +34,40 @@ const Profile = (props) => {
     return `${y}Y ${m}M ${day}D`
   }
 
+  const reTxtId = (n) => {
+    return `${n.substr(0, 7)}xxxxx${n.substr(12)}`
+  }
+
+  const uploadAvatar = () => {
+    put(route('profile.image_upload', profileData.id), data, {
+      forceFormData: true,
+    })
+  }
+
+  const afterUploadClicks = async (e) => {
+    // e.preventDefault()
+    console.dir(e.target.files[0])
+    // const config = {
+    //   headers: {
+    //     'content-type': 'multipart/form-data',
+    //   },
+    // }
+
+    // const formData = new FormData()
+    // formData.append('avatar', e.target.files[0])
+
+    // console.dir(formData)
+
+    // axios.put(
+    //   route('profile.image_upload', profileData.id),
+    //   {
+    //     'avatar': e.target.files[0]
+    //   },
+    //   config
+    // )
+    // .then(r => console.dir(r), error => console.dir(error))
+  }
+
   useEffect(() => {
     getProfile()
   }, [])
@@ -38,31 +80,47 @@ const Profile = (props) => {
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full md:w-3/12 md:mx-2">
               <div className="bg-white p-3">
-                <div className="image overflow-hidden">
+                <div className="image overflow-hidden relative group">
                   <img
                     className="h-auto w-full mx-auto"
-                    src={`/${profileData.avatar_url}`}
+                    src={avatarUrl}
                     alt={profileData.name_en}
                   />
+                  <div className="opacity-0 group-hover:opacity-100 duration-300 absolute left-0 bottom-0 right-0 z-10 flex justify-center items-end text-xl bg-transparent text-gray-200 font-bold">
+                    <button
+                      className="btn btn-ghost"
+                      onClick={() => inputRef.current.click()}
+                    >
+                      Edit
+                    </button>
+                    <input
+                      type="file"
+                      id="avatar"
+                      name="avatar"
+                      ref={inputRef}
+                      onChange={afterUploadClicks}
+                      className="hidden"
+                    />
+                  </div>
                 </div>
                 <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                   <li className="flex items-center py-3">
                     <span>Status</span>
                     <span className="ml-auto">
-                      <span className="bg-green-500 py-1 px-2 rounded text-white text-sm">
+                      <span className="bg-red-500 py-1 px-2 rounded text-white text-sm">
                         {profileData.employee_status}
                       </span>
                     </span>
                   </li>
                   <li className="flex items-center py-3">
                     <span>Start Date</span>
-                    <span className="ml-auto bg-green-500 py-1 px-2 rounded text-white text-sm">
+                    <span className="ml-auto bg-red-500 py-1 px-2 rounded text-white text-sm">
                       {profileData.start_date}
                     </span>
                   </li>
                   <li className="flex items-center py-3">
                     <span>Summary Date</span>
-                    <span className="ml-auto bg-green-500 py-1 px-2 rounded text-white text-sm">
+                    <span className="ml-auto bg-red-500 py-1 px-2 rounded text-white text-sm">
                       {minusDate(profileData.start_date)}
                     </span>
                   </li>
@@ -93,34 +151,70 @@ const Profile = (props) => {
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
                     <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">ID Card.</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {reTxtId(profileData.id_card_number)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2"> </div>
+                    <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Prefix.</div>
                       <div className="px-4 py-2">
-                        {profileData.prefix.prefix_en}
+                        <span className="text-gray-800 font-bold">
+                          {profileData.prefix.prefix_en}
+                        </span>
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Full Name</div>
-                      <div className="px-4 py-2">{profileData.name_en}</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.name_en}({profileData.nick_name})
+                        </span>
+                      </div>
                     </div>
                     <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Emp. Code</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.empcode.empcode}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2"></div>
+                    <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Gender</div>
-                      <div className="px-4 py-2">{profileData.sexual}</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.sexual}
+                        </span>
+                      </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Mobile No.</div>
-                      <div className="px-4 py-2">{profileData.mobile_no}</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.mobile_no}
+                        </span>
+                      </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         Current Address
                       </div>
-                      <div className="px-4 py-2">-</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">-</span>
+                      </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         Permanant Address
                       </div>
-                      <div className="px-4 py-2">-</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">-</span>
+                      </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Email.</div>
@@ -129,122 +223,125 @@ const Profile = (props) => {
                           className="text-blue-800"
                           href={`mailto:${profileData.user.email}`}
                         >
-                        {profileData.user.email}
+                          <span className="text-gray-800 font-bold">
+                            {profileData.user.email}
+                          </span>
                         </a>
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Birthday</div>
-                      <div className="px-4 py-2">{profileData.birth_date}</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.birth_date}
+                        </span>
+                        (
+                        <span className="text-red-800 text-bold">
+                          {minusDate(profileData.birth_date)})
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        Married Status
+                      </div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.married_status}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">
+                        Military Status
+                      </div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.military_status}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Travel</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.travel.name}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <button className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                  Show Full Information
-                </button>
               </div>
-
-              <div className="my-4"></div>
+              <div className="my-6"></div>
               <div className="bg-white p-3 shadow-sm rounded-sm">
-                <div className="grid grid-cols-2">
-                  <div>
-                    <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                      <span clas="text-green-500">
-                        <svg
-                          className="h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </span>
-                      <span className="tracking-wide">Experience</span>
+                <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                  <span clas="text-green-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon icon-tabler icon-tabler-list-details"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M13 5h8"></path>
+                      <path d="M13 9h5"></path>
+                      <path d="M13 15h8"></path>
+                      <path d="M13 19h5"></path>
+                      <rect x="3" y="4" width="6" height="6" rx="1"></rect>
+                      <rect x="3" y="14" width="6" height="6" rx="1"></rect>
+                    </svg>
+                  </span>
+                  <span className="tracking-wide">Job Infomation</span>
+                </div>
+                <div className="text-gray-700">
+                  <div className="grid md:grid-cols-2 text-sm">
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Position</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.position.name}
+                        </span>
+                      </div>
                     </div>
-                    <ul className="list-inside space-y-2">
-                      <li>
-                        <div className="text-teal-600">
-                          Owner at Her Company Inc.
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                      <li>
-                        <div className="text-teal-600">
-                          Owner at Her Company Inc.
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                      <li>
-                        <div className="text-teal-600">
-                          Owner at Her Company Inc.
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                      <li>
-                        <div className="text-teal-600">
-                          Owner at Her Company Inc.
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                      <span clas="text-green-500">
-                        <svg
-                          className="h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                          <path
-                            fill="#fff"
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                          />
-                        </svg>
-                      </span>
-                      <span className="tracking-wide">Education</span>
+                    <div className="grid grid-cols-2"> </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Section</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.section.name}
+                        </span>
+                      </div>
                     </div>
-                    <ul className="list-inside space-y-2">
-                      <li>
-                        <div className="text-teal-600">
-                          Masters Degree in Oxford
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                      <li>
-                        <div className="text-teal-600">
-                          Bachelors Degreen in LPU
-                        </div>
-                        <div className="text-gray-500 text-xs">
-                          March 2020 - Now
-                        </div>
-                      </li>
-                    </ul>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Department</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.department.name}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Shift</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.shift.description}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <div className="px-4 py-2 font-semibold">Warehouse</div>
+                      <div className="px-4 py-2">
+                        <span className="text-gray-800 font-bold">
+                          {profileData.whs.name}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

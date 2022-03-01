@@ -41,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/profile')->group(function() {
         Route::get('/index', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('/get', [ProfileController::class, 'get'])->name('profile.get');
+        Route::put('/{profile}/images', [ProfileController::class, 'image_upload'])->name('profile.image_upload');
     });
 
     Route::get('/notifications', [DashBoardController::class, 'index'])->name('notifications.index');

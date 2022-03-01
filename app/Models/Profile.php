@@ -13,6 +13,7 @@ class Profile extends Model
 
     public $fillable = [
         'user_id',
+        'whs_id',
         'position_id',
         'section_id',
         'department_id',
@@ -37,6 +38,10 @@ class Profile extends Model
 
     public function user() {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function whs() {
+        return $this->hasOne(Whs::class, 'id', 'whs_id');
     }
 
     public function position() {
@@ -65,6 +70,14 @@ class Profile extends Model
 
     public function prefix() {
         return $this->hasOne(PrefixName::class, 'id', 'prefix_id');
+    }
+
+    public function address() {
+        return $this->hasMany(EmployeeAddress::class, 'profile_id', 'id');
+    }
+
+    public function empcode() {
+        return $this->hasOne(Employee::class, 'profile_id', 'id');
     }
 
 }

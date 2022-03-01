@@ -7,7 +7,11 @@ module.exports = {
     './resources/views/**/*.blade.php',
     './resources/js/**/*.js',
   ],
-
+  variants: {
+    extend: {
+      display: ['group-hover'],
+    },
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -16,8 +20,5 @@ module.exports = {
     },
   },
 
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('daisyui')
-  ],
+  plugins: [require('@tailwindcss/forms'), require('daisyui')],
 }

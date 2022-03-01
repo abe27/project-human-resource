@@ -22,16 +22,32 @@ class ProfileController extends Controller
     {
         $data = Profile::with([
             'user',
+            'whs',
             'position',
             'section',
             'department',
             'travel',
             'shift',
             'level',
-            'prefix'
+            'prefix',
+            'address',
+            'empcode'
         ])->where('user_id', $request->user()->id)->first();
         // return response()->json($request->user()->load('profile'));
         return response()->json($data);
+    }
+
+    public function image_upload(Profile $profile, Request $request)
+    {
+        // if ($request->hasFile('avatar')) {
+        //     $file_name = $request->file('avatar')->getClientOriginalName();
+        //     return response()->json(['success' => 'You have successfully uploaded "' . $file_name . '"']);
+        // }
+
+        // return response()->json([
+        //     'message' => 'You must not a file'
+        // ]);
+        return $request;
     }
 
     /**
