@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->char('id', 21)->primary();
             $table->uuid('user_id');
+            $table->char('company_id', 21);
             $table->char('whs_id', 21);
             $table->char('position_id', 21);
             $table->char('section_id', 21);
@@ -39,6 +40,7 @@ return new class extends Migration
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('company_id')->references('id')->on('companies')->cascadeOnDelete();
             $table->foreign('whs_id')->references('id')->on('whs')->cascadeOnDelete();
             $table->foreign('position_id')->references('id')->on('positions')->cascadeOnDelete();
             $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();

@@ -13,6 +13,7 @@ class Profile extends Model
 
     public $fillable = [
         'user_id',
+        'company_id',
         'whs_id',
         'position_id',
         'section_id',
@@ -38,6 +39,10 @@ class Profile extends Model
 
     public function user() {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function company() {
+        return $this->hasOne(Company::class, 'id', 'company_id');
     }
 
     public function whs() {

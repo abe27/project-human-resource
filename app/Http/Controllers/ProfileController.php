@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Department;
+use App\Models\Position;
+use App\Models\PrefixName;
 use App\Models\Profile;
+use App\Models\Section;
+use App\Models\Shift;
+use App\Models\Traveling;
+use App\Models\Whs;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,13 +23,60 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Profile');
+        $postion = Position::where('is_active', true)->get();
+        $section = Section::where('is_active', true)->get();
+        $department = Department::where('is_active', true)->get();
+        $whs = Whs::where('is_active', true)->get();
+        $shift = Shift::where('is_active', true)->get();
+        $company = Company::where('is_active', true)->get();
+        $travel = Traveling::where('is_active', true)->get();
+        $prefix = PrefixName::where('is_active', true)->get();
+        $military = [
+            ["name" => "-",],
+            ["name" => "No",],
+            ["name" => "Yes"],
+        ];
+        $married_status = [
+            ["name" => "-",],
+            ["name" => 'Single',],
+            ["name" => 'Married'],
+        ];
+        $gender = [
+            ["name" => "-",],
+            ["name" => 'Female',],
+            ["name" => 'Male'],
+        ];
+
+        $employee_status = [
+            ["name" => '-',],
+            ["name" => 'Part_Time',],
+            ["name" => 'Outsource',],
+            ["name" => 'Daily',],
+            ["name" => 'Employee'],
+        ];
+
+        $data = [
+            'position' => $postion,
+            'section' => $section,
+            'department' => $department,
+            'whs' => $whs,
+            'shift' => $shift,
+            'company' => $company,
+            'travel' => $travel,
+            'prefix' => $prefix,
+            'military' => $military,
+            'married_status' => $married_status,
+            'gender' => $gender,
+            'employee_status' => $employee_status,
+        ];
+        return Inertia::render('Profile', $data);
     }
 
     public function get(Request $request)
     {
         $data = Profile::with([
             'user',
+            'company',
             'whs',
             'position',
             'section',

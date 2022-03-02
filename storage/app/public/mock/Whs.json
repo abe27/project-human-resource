@@ -1,6 +1,6 @@
 [{
   "name": "RMW",
-  "description": "-",
+  "description": "RMW",
   "is_active": true
 }, {
   "name": "FG",
@@ -8,18 +8,18 @@
   "is_active": true
 }, {
   "name": "J03",
-  "description": "-",
+  "description": "J03",
   "is_active": true
 }, {
   "name": "CK1",
-  "description": "-",
+  "description": "CK1",
   "is_active": true
 }, {
   "name": "CK2",
-  "description": "-",
+  "description": "CK2",
   "is_active": true
 }, {
   "name": "Meter",
-  "description": "-",
+  "description": "Meter",
   "is_active": true
 }]

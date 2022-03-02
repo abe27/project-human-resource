@@ -1,83 +1,79 @@
 [{
     "name": "President",
-    "description": "-",
+    "description": "President",
     "is_active": true
   }, {
     "name": "Vice President",
-    "description": "-",
+    "description": "Vice President",
     "is_active": true
   }, {
     "name": "OP. Manager",
-    "description": "-",
+    "description": "Operations Manager",
     "is_active": true
   }, {
     "name": "General Manager",
-    "description": "-",
+    "description": "General Manager",
     "is_active": true
   },
   {
     "name": "Manager",
-    "description": "-",
+    "description": "Manager",
     "is_active": true
   }, {
     "name": "Asst. Manager",
-    "description": "-",
+    "description": "Assistant Manager",
     "is_active": true
   }, {
     "name": "Foreman",
-    "description": "-",
+    "description": "Foreman",
     "is_active": true
   }, {
     "name": "Supervisor",
-    "description": "-",
+    "description": "Supervisor",
     "is_active": true
   }, {
     "name": "Leader",
-    "description": "-",
+    "description": "Leader",
     "is_active": true
   }, {
     "name": "Programmer",
-    "description": "-",
+    "description": "Programmer",
     "is_active": true
   }, {
     "name": "IT Support Staff",
-    "description": "-",
-    "is_active": true
-  }, {
-    "name": "Programmer",
-    "description": "-",
+    "description": "IT Support Staff",
     "is_active": true
   }, {
     "name": "Staff",
-    "description": "-",
+    "description": "Staff",
     "is_active": true
   }, {
     "name": "Worker",
-    "description": "-",
+    "description": "Worker",
     "is_active": true
   }, {
     "name": "Driver",
-    "description": "-",
+    "description": "Driver",
     "is_active": true
   }, {
     "name": "Maintenance",
-    "description": "-",
+    "description": "Maintenance",
     "is_active": true
   }, {
     "name": "Interpreter",
-    "description": "-",
+    "description": "Interpreter",
     "is_active": true
   }, {
     "name": "Japanese Secretary",
-    "description": "-",
+    "description": "Japanese Secretary",
     "is_active": true
   }, {
     "name": "Security Guard",
-    "description": "-",
+    "description": "Security Guard",
     "is_active": true
   }, {
     "name": "House Keeper",
-    "description": "-",
+    "description": "House Keeper",
     "is_active": true
   }
 ]

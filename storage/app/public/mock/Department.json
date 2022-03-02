@@ -1,10 +1,10 @@
 [{
   "name": "Administration",
-  "description": "-",
+  "description": "Administration",
   "is_active": true
 }, {
   "name": "Data Stock",
-  "description": "-",
+  "description": "Data Stock",
   "is_active": true
 }, {
   "name": "HR",
@@ -12,63 +12,63 @@
   "is_active": true
 }, {
   "name": "Accounting",
-  "description": "-",
+  "description": "Accounting",
   "is_active": true
 }, {
   "name": "Replacement",
-  "description": "-",
+  "description": "Replacement",
   "is_active": true
 }, {
   "name": "Free Location",
-  "description": "-",
+  "description": "Free Location",
   "is_active": true
 }, {
   "name": "Receive",
-  "description": "-",
+  "description": "Receive",
   "is_active": true
 }, {
   "name": "Delivery",
-  "description": "-",
+  "description": "Delivery",
   "is_active": true
 }, {
   "name": "PBD",
-  "description": "-",
+  "description": "PBD",
   "is_active": true
 }, {
   "name": "KANBAN",
-  "description": "-",
+  "description": "KANBAN",
   "is_active": true
 }, {
   "name": "Polytainer",
-  "description": "-",
+  "description": "Polytainer",
   "is_active": true
 }, {
   "name": "Part Sales",
-  "description": "-",
+  "description": "Part Sales",
   "is_active": true
 }, {
   "name": "Sample",
-  "description": "-",
+  "description": "Sample",
   "is_active": true
 }, {
   "name": "Stock",
-  "description": "-",
+  "description": "Stock",
   "is_active": true
 }, {
   "name": "Wire",
-  "description": "-",
+  "description": "Wire",
   "is_active": true
 }, {
   "name": "Loading",
-  "description": "-",
+  "description": "Loading",
   "is_active": true
 }, {
   "name": "Transportation",
-  "description": "-",
+  "description": "Transportation",
   "is_active": true
 }, {
   "name": "Sales&Marketing",
-  "description": "-",
+  "description": "Sales&Marketing",
   "is_active": true
 }, {
   "name": "Apprentice",
@@ -76,7 +76,7 @@
   "is_active": true
 }, {
   "name": "IT",
-  "description": "-",
+  "description": "IT",
   "is_active": true
 }
 ]

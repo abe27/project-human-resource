@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use App\Models\Department;
 use App\Models\Level;
 use App\Models\Position;
@@ -39,8 +40,10 @@ class ProfileSeeder extends Seeder
             $shift = Shift::where('name', $key->shift_id)->first();
             $level = Level::where('name', $key->level_id)->first();
             $prefix = PrefixName::where('prefix_en', $key->prefix_id)->first();
+            $company = Company::where('name', $key->company)->first();
             $profile = new Profile();
             $profile->user_id = $user->id;
+            $profile->company_id = $company->id;
             $profile->whs_id = $whs->id;
             $profile->position_id = $position->id;
             $profile->section_id = $section->id;

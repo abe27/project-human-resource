@@ -4,6 +4,14 @@ import { Head, useForm } from '@inertiajs/inertia-react'
 import { Skeletons } from '@/Components'
 import axios from 'axios'
 
+const Option = ({ obj }) => {
+  return obj.map((i) => (
+    <option key={i.id} value={i.id}>
+      {i.description}
+    </option>
+  ))
+}
+
 const Profile = (props) => {
   const inputRef = useRef()
   const btnSubmit = useRef()
@@ -17,7 +25,7 @@ const Profile = (props) => {
   const getProfile = async () => {
     const get = await axios.get(route('profile.get'))
     const data = await get.data
-    // console.dir(data)
+    console.dir(props)
     setProfileData(data)
     setAvatarUrl(`/${data.avatar_url}`)
   }
@@ -94,7 +102,7 @@ const Profile = (props) => {
                     >
                       Edit
                     </button>
-                    <form submit="uploadAvatar" enctype="multipart/form-data">
+                    <form submit="uploadAvatar" encType="multipart/form-data">
                       <input
                         type="file"
                         id="avatar"
@@ -103,7 +111,9 @@ const Profile = (props) => {
                         onChange={afterUploadClicks}
                         className="hidden"
                       />
-                      <button type="submit" className="btn btn-primary">Click</button>
+                      <button type="submit" className="hidden">
+                        Click
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -154,83 +164,117 @@ const Profile = (props) => {
                 </div>
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">ID Card.</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {reTxtId(profileData.id_card_number)}
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <input
+                          type="text"
+                          className="input input-sm w-full max-w-full"
+                          placeholder="ID Card"
+                          defaultValue={reTxtId(profileData.id_card_number)}
+                        />
                       </div>
                     </div>
                     <div className="grid grid-cols-2"> </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Prefix.</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.prefix.prefix_en}
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.prefix.id}
+                        >
+                          {props.prefix.map((i) => (
+                            <option key={i.id} value={i.id}>
+                              {i.prefix_en}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Full Name</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.name_en}({profileData.nick_name})
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <input
+                          type="text"
+                          className="input input-sm w-full max-w-full"
+                          placeholder="Full Name"
+                          defaultValue={profileData.name_en}
+                        />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Emp. Code</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.empcode.empcode}
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <input
+                          type="text"
+                          className="input input-sm w-full max-w-full"
+                          placeholder="Employee Code"
+                          defaultValue={profileData.empcode.empcode}
+                        />
                       </div>
                     </div>
                     <div className="grid grid-cols-2"></div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Gender</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.sexual}
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.sexual}
+                        >
+                          {props.gender.map((i) => (
+                            <option key={i.name} value={i.name}>
+                              {i.name}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Mobile No.</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.mobile_no}
-                        </span>
+                      <div className="col-span-3 px-4">
+                        <input
+                          type="text"
+                          className="input input-sm w-full max-w-full"
+                          placeholder="Mobile No."
+                          defaultValue={profileData.mobile_no}
+                        />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">
                         Current Address
                       </div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">-</span>
+                      <div className="col-span-3 px-4">
+                        <textarea
+                          className="textarea w-full max-w-full"
+                          placeholder="Bio"
+                        >
+                          -
+                        </textarea>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">
                         Permanant Address
                       </div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">-</span>
+                      <div className="col-span-3 px-4">
+                        <textarea
+                          className="textarea w-full max-w-full"
+                          placeholder="Bio"
+                        >
+                          -
+                        </textarea>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Email.</div>
-                      <div className="px-4 py-2">
-                        <a
-                          className="text-blue-800"
-                          href={`mailto:${profileData.user.email}`}
-                        >
-                          <span className="text-gray-800 font-bold">
-                            {profileData.user.email}
-                          </span>
-                        </a>
+                      <div className="col-span-3 px-4">
+                        <input
+                          type="text"
+                          className="input input-sm w-full max-w-full"
+                          placeholder="Email."
+                          defaultValue={profileData.user.email}
+                        />
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
@@ -265,9 +309,9 @@ const Profile = (props) => {
                         </span>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Travel</div>
-                      <div className="px-4 py-2">
+                    <div className="grid grid-cols-4">
+                      <div className="px-4 py-2">Travel</div>
+                      <div className="col-span-3">
                         <span className="text-gray-800 font-bold">
                           {profileData.travel.name}
                         </span>
@@ -305,45 +349,72 @@ const Profile = (props) => {
                 </div>
                 <div className="text-gray-700">
                   <div className="grid md:grid-cols-2 text-sm">
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Position</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.position.name}
-                        </span>
+                    <div className="grid grid-cols-4">
+                      <div className="px-4 py-2 font-semibold">Company</div>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.company.id}
+                        >
+                          <Option obj={props.company} />
+                        </select>
                       </div>
                     </div>
                     <div className="grid grid-cols-2"> </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Section</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.section.name}
-                        </span>
+                    <div className="grid grid-cols-4">
+                      <div className="px-4 py-2 font-semibold">Position</div>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.position.id}
+                        >
+                          <Option obj={props.position} />
+                        </select>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-2"> </div>
+                    <div className="grid grid-cols-4">
+                      <div className="px-4 py-2">Section</div>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.section.id}
+                        >
+                          <Option obj={props.section} />
+                        </select>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Department</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.department.name}
-                        </span>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.department.id}
+                        >
+                          <Option obj={props.department} />
+                        </select>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
-                      <div className="px-4 py-2 font-semibold">Shift</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.shift.description}
-                        </span>
+                    <div className="grid grid-cols-4">
+                      <div className="px-4 py-2">Shift</div>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.shift.id}
+                        >
+                          <Option obj={props.shift} />
+                        </select>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="grid grid-cols-4">
                       <div className="px-4 py-2 font-semibold">Warehouse</div>
-                      <div className="px-4 py-2">
-                        <span className="text-gray-800 font-bold">
-                          {profileData.whs.name}
-                        </span>
+                      <div className="col-span-3">
+                        <select
+                          className="select select-sm w-full max-w-full select-ghost"
+                          defaultValue={profileData.whs.id}
+                        >
+                          <Option obj={props.whs} />
+                        </select>
                       </div>
                     </div>
                   </div>
