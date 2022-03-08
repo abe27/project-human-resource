@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tombons', function (Blueprint $table) {
+        Schema::create('leave_groups', function (Blueprint $table) {
             $table->char('id', 21)->primary();
-            $table->string("zip_code");
-            $table->string("name");
-            $table->longText("description")->nullable();
-            $table->char("district_id", 21);
-            $table->boolean("is_active")->nullable()->default(false);
+            $table->string('name')->unique();
+            $table->longText('description')->nullable();
+            $table->decimal('limit_day', 8, 2)->nullable()->default(0);
+            $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
-            $table->foreign('district_id')->references('id')->on('districts')->cascadeOnDelete();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tombons');
+        Schema::dropIfExists('leave_groups');
     }
 };

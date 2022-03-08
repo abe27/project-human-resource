@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\District;
-use App\Models\Tombon;
+use App\Models\LeaveGroup;
 use Illuminate\Http\Request;
 
-class TombonController extends Controller
+class LeaveGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,6 @@ class TombonController extends Controller
     public function index()
     {
         //
-    }
-
-    public function get(District $district) {
-        $data = Tombon::where('district_id', $district->id)->where('is_active', true)->orderBy('zip_code')->get();
-        return response()->json($data);
     }
 
     /**
@@ -47,10 +41,10 @@ class TombonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tombon  $tombon
+     * @param  \App\Models\LeaveGroup  $leaveGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(Tombon $tombon)
+    public function show(LeaveGroup $leaveGroup)
     {
         //
     }
@@ -58,10 +52,10 @@ class TombonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tombon  $tombon
+     * @param  \App\Models\LeaveGroup  $leaveGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tombon $tombon)
+    public function edit(LeaveGroup $leaveGroup)
     {
         //
     }
@@ -70,10 +64,10 @@ class TombonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tombon  $tombon
+     * @param  \App\Models\LeaveGroup  $leaveGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tombon $tombon)
+    public function update(Request $request, LeaveGroup $leaveGroup)
     {
         //
     }
@@ -81,10 +75,10 @@ class TombonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tombon  $tombon
+     * @param  \App\Models\LeaveGroup  $leaveGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tombon $tombon)
+    public function destroy(LeaveGroup $leaveGroup)
     {
         //
     }

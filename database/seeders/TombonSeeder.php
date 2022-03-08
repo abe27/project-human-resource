@@ -30,6 +30,7 @@ class TombonSeeder extends Seeder
             $tombon->name = $key->name_th;
             $tombon->description = $key->name_en;
             $tombon->district_id = $district->id;
+            $tombon->is_active = true;
             $tombon->save();
         }
     }

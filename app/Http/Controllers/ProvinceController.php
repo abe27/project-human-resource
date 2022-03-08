@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Geography;
 use App\Models\Province;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,12 @@ class ProvinceController extends Controller
     public function index()
     {
         //
+    }
+
+    public function get(Geography $geography)
+    {
+        $province = Province::where('geo_id', $geography->id)->where('is_active', true)->orderBy('name')->get();
+        return response()->json($province);
     }
 
     /**

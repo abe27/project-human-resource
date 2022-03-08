@@ -17,6 +17,12 @@ class GeographyController extends Controller
         //
     }
 
+    public function get()
+    {
+        $geo = Geography::where('is_active', true)->orderBy('geo_id')->get();
+        return response()->json($geo);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

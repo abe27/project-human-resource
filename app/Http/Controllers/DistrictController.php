@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\District;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -15,6 +16,12 @@ class DistrictController extends Controller
     public function index()
     {
         //
+    }
+
+    public function get(Province $province)
+    {
+        $data = District::where('province_id', $province->id)->where('is_active', true)->orderBy('district_name')->get();
+        return response()->json($data);
     }
 
     /**

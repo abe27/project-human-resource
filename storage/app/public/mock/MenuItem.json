@@ -67,6 +67,19 @@
   {
     "is_dash": false,
     "menu_group": "Main",
+    "name": "Employee",
+    "font_icon": "fas fa-users",
+    "menu_method": "get",
+    "route_name": "employee.index",
+    "text_color": "text-gray-500",
+    "over_hover": "border-purple-500",
+    "description": "Settings",
+    "for_admin": true,
+    "is_active": true
+  },
+  {
+    "is_dash": false,
+    "menu_group": "Main",
     "name": "Settings",
     "font_icon": "fas fa-screwdriver-wrench",
     "menu_method": "get",
